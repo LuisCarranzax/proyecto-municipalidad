@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv/
+
+# Variables de entorno
+.env
+.env.*
+
+# Logs
+*.log
+
+# Jupyter Notebooks
+.ipynb_checkpoints/

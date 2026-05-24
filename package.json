@@ -1,0 +1,25 @@
+{
+  "name": "proyecto_municipalidad",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev:backend": "cd backend && pnpm run dev",
+    "dev:frontend": "cd frontend && pnpm run dev",
+    "dev:ia": "cd ml_model/api && uvicorn main:app --reload --port 8000",
+    "dev": "concurrently -c \"cyan,magenta,yellow\" -n \"NODE,REACT,PYTHON\" \"pnpm run dev:backend\" \"pnpm run dev:frontend\" \"pnpm run dev:ia\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "@11.2.2",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

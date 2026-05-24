@@ -1,5 +1,5 @@
 const pool = require('../../config/db');
-// const axios = require('axios'); // Para la futura conexión con Python
+const axios = require('axios'); // Para la futura conexión con Python
 
 const createTramite = async (req, res) => {
     try {
@@ -24,9 +24,8 @@ const createTramite = async (req, res) => {
         }
 
         // 3. Llamada al modelo de IA de Python (Simulada temporalmente)
-        // const iaResponse = await axios.post('http://localhost:8000/predict', { texto: descripcion });
-        // const prioridad_calculada = iaResponse.data.prioridad;
-        const prioridad_calculada = "Alta"; 
+        const iaResponse = await axios.post('http://localhost:8000/predict', { texto: descripcion });
+        const prioridad_calculada = iaResponse.data.prioridad;
 
         // 4. Guardar el trámite en la base de datos MySQL usando el DNI
         const queryTramite = `
