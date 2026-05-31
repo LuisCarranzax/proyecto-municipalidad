@@ -13,9 +13,9 @@ class TramiteRequest(BaseModel):
 ruta_modelo = os.path.join(os.path.dirname(__file__), "..", "models", "modelo_prioridad.pkl")
 try:
     modelo_ia = joblib.load(ruta_modelo)
-    print("[INFO] Modelo de IA cargado correctamente en memoria.")
+    print("[INFO] Modelo de IA cargado correctamente en memoria.", flush=True)
 except Exception as e:
-    print(f"[ERROR] Fallo al cargar el modelo: {e}")
+    print(f"[ERROR] Fallo al cargar el modelo: {e}", flush=True)
     modelo_ia = None
 
 @app.post("/predict")

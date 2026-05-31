@@ -32,6 +32,7 @@ services:
       - DB_USER=root
       - DB_PASSWORD=root
       - DB_NAME=db_municipalidad
+      - ML_API_URL=http://ml_api:8000/predict
     ports:
       - "3000:3000"
     depends_on:
