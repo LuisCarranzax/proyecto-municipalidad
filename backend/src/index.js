@@ -8,7 +8,7 @@ const app = express();
 
 // Middlewares
 app.use(cors());
-app.use(express.json()); // Permite recibir JSON en el body
+app.use(express.json()); 
 
 // Rutas base
 app.use('/api/tramites', tramitesRoutes);

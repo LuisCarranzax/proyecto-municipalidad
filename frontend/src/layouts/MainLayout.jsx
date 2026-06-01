@@ -7,7 +7,7 @@ const MainLayout = () => {
     <div className="app-container">
       <Sidebar />
       <main className="main-content">
-        <Outlet /> {/* Aquí se renderizarán las páginas (Dashboard o Registro) */}
+        <Outlet /> 
       </main>
     </div>
   );

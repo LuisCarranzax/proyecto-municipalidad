@@ -5,7 +5,7 @@ import os
 
 app = FastAPI(title="API Municipalidad - ML Predictor")
 
-# Definir la estructura de los datos que esperamos recibir desde Node.js
+# Definir la estructura de los datos
 class TramiteRequest(BaseModel):
     texto: str
 
@@ -29,8 +29,10 @@ async def predecir_prioridad(request: TramiteRequest):
     # 1. Hacer la predicción
     prediccion = modelo_ia.predict([request.texto])[0]
     
-    # 2. Devolver la respuesta en formato JSON (que Node.js entenderá perfectamente)
+    # 2. Devolver la respuesta en formato JSON
     return {
         "prioridad": prediccion,
         "mensaje": "Predicción generada con éxito"
     }
+
+    

@@ -12,7 +12,6 @@ ruta_csv = "data/dataset_tramites_municipalidad.csv"
 print("Cargando datos...")
 df = pd.read_csv(ruta_csv)
 
-# Unimos Asunto y Descripción para darle más contexto al modelo
 df['texto_completo'] = df['asunto'] + " " + df['descripcion']
 
 X = df['texto_completo']
@@ -22,11 +21,10 @@ y = df['prioridad_historica']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # 3. Crear un Pipeline de Machine Learning
-# Pipeline mantiene el código modular: primero vectoriza el texto, luego clasifica
 print("Entrenando el modelo...")
 modelo_ia = Pipeline([
     ('vectorizador', TfidfVectorizer(stop_words=None, max_features=5000)),
-    ('clasificador', MultinomialNB()) # Naive Bayes es excelente y rápido para texto
+    ('clasificador', MultinomialNB()) 
 ])
 
 modelo_ia.fit(X_train, y_train)
@@ -41,4 +39,4 @@ ruta_modelo = "models/modelo_prioridad.pkl"
 os.makedirs("models", exist_ok=True)
 joblib.dump(modelo_ia, ruta_modelo)
 
-print(f"\n✅ Modelo guardado exitosamente en '{ruta_modelo}'. Listo para la API.")
+print(f"\nModelo guardado exitosamente en '{ruta_modelo}'. Listo para la API.")

@@ -7,7 +7,7 @@ export const obtenerTramites = async () => {
         const data = await response.json();
         
         if (data.success) {
-            return data.data; // Retornamos solo el arreglo de trámites
+            return data.data; 
         } else {
             console.error("Error en la respuesta del servidor:", data.message);
             return [];

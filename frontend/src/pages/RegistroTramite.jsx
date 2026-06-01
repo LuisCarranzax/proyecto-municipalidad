@@ -57,7 +57,6 @@ const RegistroTramite = () => {
       
       <div className="card">
         <form onSubmit={handleSubmit}>
-          {/* Fila 1: DNI y Teléfono */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
             <div className="form-group">
               <label>DNI <span className="required-marker">*</span></label>
@@ -69,7 +68,6 @@ const RegistroTramite = () => {
             </div>
           </div>
 
-          {/* Fila 2: Nombres y Apellidos */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
             <div className="form-group">
               <label>Nombres <span className="required-marker">*</span></label>
@@ -88,7 +86,6 @@ const RegistroTramite = () => {
 
           <hr style={{ border: 'none', borderTop: '1px solid #e2e8f0', margin: '2rem 0' }} />
 
-          {/* Datos del Trámite */}
           <div className="form-group">
             <label>Tipo de Trámite <span className="required-marker">*</span></label>
             <select name="tipo_tramite" className="form-control form-control-lg" required value={formData.tipo_tramite} onChange={handleChange}>
@@ -97,6 +94,11 @@ const RegistroTramite = () => {
               <option value="Pago de Arbitrios">Pago de Arbitrios</option>
               <option value="Inspección de Defensa Civil">Inspección de Defensa Civil</option>
               <option value="Queja o Denuncia">Queja o Denuncia</option>
+              <option value="Solicitud de información">Solicitud de información</option>
+              <option value="Trámite de licencia de construcción">Trámite de licencia de construcción</option>
+              <option value="Solicitud de certificado de zonificación">Solicitud de certificado de zonificación</option>
+              <option value="Solicitud de carné de vacunación">Solicitud de carné de vacunación</option>
+              <option value="Reporte de basura en la vía pública">Reporte de basura en la vía pública</option>
             </select>
           </div>
           

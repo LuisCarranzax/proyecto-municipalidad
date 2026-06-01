@@ -3,7 +3,6 @@ const axios = require('axios'); // Para la futura conexión con Python
 
 const createTramite = async (req, res) => {
     try {
-        // Desestructuramos tanto los datos del ciudadano como los del trámite
         const { 
             dni, nombre, apellidos, telefono, email, // Datos Ciudadano
             tipo_tramite, asunto, descripcion        // Datos Trámite
@@ -15,7 +14,7 @@ const createTramite = async (req, res) => {
             [dni]
         );
 
-        // 2. Si el ciudadano NO existe, lo registramos primero
+        // 2. Si el ciudadano NO existe
         if (ciudadanoExistente.length === 0) {
             await pool.execute(
                 'INSERT INTO ciudadanos (dni, nombre, apellidos, telefono, email) VALUES (?, ?, ?, ?, ?)',
@@ -23,7 +22,7 @@ const createTramite = async (req, res) => {
             );
         }
 
-        // 3. Llamada al modelo de IA de Python (Simulada temporalmente)
+        // 3. Llamada al modelo de IA de Python 
         const mlApiUrl = process.env.ML_API_URL || 'http://localhost:8000/predict';
         const iaResponse = await axios.post(mlApiUrl, { texto: descripcion });
         const prioridad_calculada = iaResponse.data.prioridad;

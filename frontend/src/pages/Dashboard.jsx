@@ -42,12 +42,10 @@ const Dashboard = () => {
     if (exito) {
       setTramites(tramites.filter(t => t.id_tramite !== idAEliminar));
       
-      // Mostrar alerta de éxito
       setAlerta({ mostrar: true, mensaje: 'Trámite eliminado correctamente del sistema.' });
       setTimeout(() => setAlerta({ mostrar: false, mensaje: '' }), 4000);
     }
     
-    // Cerrar modal de confirmación y limpiar ID
     setConfirmacionAbierta(false);
     setIdAEliminar(null);
   };
@@ -85,7 +83,6 @@ const Dashboard = () => {
 
   return (
     <div>
-      {/* --- NOTIFICACIÓN FLOTANTE (ÉXITO) --- */}
       {alerta.mostrar && (
         <div className="custom-alert">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -96,7 +93,6 @@ const Dashboard = () => {
         </div>
       )}
 
-      {/* --- MODAL DE CONFIRMACIÓN DE ELIMINACIÓN --- */}
       {confirmacionAbierta && (
         <div className="modal-overlay" onClick={cancelarEliminacion}>
           <div className="confirm-modal" onClick={(e) => e.stopPropagation()}>
@@ -119,7 +115,6 @@ const Dashboard = () => {
         </div>
       )}
 
-      {/* --- INICIO DEL MODAL TIPO CORREO --- */}
       {modalAbierto && tramiteSeleccionado && (
         <div className="modal-overlay" onClick={cerrarModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -162,7 +157,6 @@ const Dashboard = () => {
           </div>
         </div>
       )}
-      {/* --- FIN DEL MODAL --- */}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <div>

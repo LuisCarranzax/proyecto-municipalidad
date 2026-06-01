@@ -17,7 +17,7 @@ CREATE TABLE areas (
     nombre_area VARCHAR(100) NOT NULL
 );
 
--- Tabla principal de Trámites (La que consumirá la IA)
+-- Tabla principal de Trámites 
 CREATE TABLE tramites (
     id_tramite INT AUTO_INCREMENT PRIMARY KEY,
     dni_ciudadano VARCHAR(8) NOT NULL,
