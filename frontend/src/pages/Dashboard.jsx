@@ -66,6 +66,14 @@ const Dashboard = () => {
     setTramiteSeleccionado(null);
   };
 
+  const notificarCiudadano = (tramite) => {
+    setAlerta({ 
+      mostrar: true, 
+      mensaje: `Mensaje de recepción enviado a ${tramite.nombre} (${tramite.email || 'correo no registrado'})` 
+    });
+    setTimeout(() => setAlerta({ mostrar: false, mensaje: '' }), 4000);
+  };
+
   const getPrioridadBadge = (prioridad) => {
     switch (prioridad?.toLowerCase()) {
       case 'alta': return 'badge badge-alta';
@@ -145,12 +153,25 @@ const Dashboard = () => {
               </div>
               
               <div style={{ marginTop: '2rem', borderTop: '1px solid #e2e8f0', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '0.9rem', color: '#64748b' }}>
-                  Evaluación del Sistema Predictivo
-                </span>
-                <span className={getPrioridadBadge(tramiteSeleccionado.prioridad_ia)}>
-                  Prioridad {tramiteSeleccionado.prioridad_ia}
-                </span>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                  <span className={getPrioridadBadge(tramiteSeleccionado.prioridad_ia)}>
+                    Prioridad {tramiteSeleccionado.prioridad_ia}
+                  </span>
+                  <span style={{ fontSize: '0.9rem', color: '#64748b' }}>
+                    Evaluación de IA
+                  </span>
+                </div>
+                <button 
+                  className="btn-primary" 
+                  style={{ borderRadius: '50px', padding: '0.4rem 1.2rem', fontSize: '0.85rem', width: 'auto', display: 'flex', gap: '6px', alignItems: 'center' }}
+                  onClick={() => notificarCiudadano(tramiteSeleccionado)}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  Notificar Recepción
+                </button>
               </div>
             </div>
 
